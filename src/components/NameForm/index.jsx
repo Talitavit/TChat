@@ -1,9 +1,11 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { db } from "../../firebase";
+import styles from "./styles.module.css";
 
 function NameForm({ setName, pendingRoom }) {
-  const [username, setUsername] = useState('');
-  const [room, setRoom] = useState(pendingRoom ||'');
+  const [username, setUsername] = useState("");
+  const [room, setRoom] = useState(pendingRoom || "");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
