@@ -1,16 +1,15 @@
-// src/components/NameForm.js
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function NameForm({ setName }) {
+function NameForm({ setName, pendingRoom }) {
   const [username, setUsername] = useState('');
-  const [room, setRoom] = useState('');
+  const [room, setRoom] = useState(pendingRoom ||'');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.setItem("username", username);
     setName(username);
+    localStorage.setItem("username", username);
     navigate(`/${room}`);
   };
 

@@ -1,19 +1,27 @@
-// src/App.js
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import ChatRoom from './components/ChatRoom';
 import NameForm from './components/NameForm';
-import { useState } from 'react';
 
 function App() {
-  const [name, setName] = useState(localStorage.getItem("username") || "");
+  const [name, setName] = useState('');
+  const [pendingRoom, setPendingRoom] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const roomFromUrl = location.pathname.slice(1);
+    if (!name && roomFromUrl) {
+      setPendingRoom(roomFromUrl);
+      navigate('/');  
+    }
+  }, [name, location.pathname, navigate]);
 
   return (
-    <Router>
       <Routes>
-        <Route path="/" element={<NameForm setName={setName} />} />
+        <Route path="/" element={<NameForm setName={setName} pendingRoom={pendingRoom} />} />
         <Route path="/:roomId" element={<ChatRoom name={name} />} />
       </Routes>
-    </Router>
   );
 }
 
