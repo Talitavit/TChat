@@ -4,6 +4,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import NameForm from "./components/NameForm";
 import ChatRoom from "./components/ChatRoom";
+import "./index.module.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

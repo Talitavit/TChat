@@ -1,0 +1,9 @@
+:root {
+  --background-color: #d7a7ff;
+  --background-color-secondary: rgba(165, 106, 189, 0.54);
+  --background-color-tertiary: #371d58;
+  --text-color: #ffffff;
+  --text-color-secondary: #ffffffd3;
+  --button: #e7dbef;
+  --button-hover: #1c003d;
+}

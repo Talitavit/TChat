@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { db } from "../../firebase";
 import styles from "./styles.module.css";
 
 function NameForm({ setName, pendingRoom }) {
@@ -16,24 +15,35 @@ function NameForm({ setName, pendingRoom }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Entrar no Chat</h2>
-      <input
-        type="text"
-        placeholder="Seu nome"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Nome da sala (ex: estudo)"
-        value={room}
-        onChange={(e) => setRoom(e.target.value)}
-        required
-      />
-      <button type="submit">Entrar</button>
-    </form>
+    <div className={styles.mascot}>
+      <img src="./mascot.png" alt="mascot" className={styles.foto} />
+
+      <form onSubmit={handleSubmit} className={styles.formContainer}>
+        <h2 className={styles.title}>Entrar no Chat</h2>
+
+        <input
+          type="text"
+          placeholder="Seu nome"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className={styles.input}
+          required
+        />
+
+        <input
+          type="text"
+          placeholder="Nome da sala (ex: estudo)"
+          value={room}
+          onChange={(e) => setRoom(e.target.value)}
+          className={styles.input}
+          required
+        />
+
+        <button type="submit" className={styles.button}>
+          Entrar
+        </button>
+      </form>
+    </div>
   );
 }
 
